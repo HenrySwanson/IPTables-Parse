@@ -803,7 +803,7 @@ sub default_log() {
             if ($self->{'_ipt_bin_name'} eq 'ip6tables'
                     or ($self->{'_ipt_bin_name'} eq 'firewall-cmd'
                     and $self->{'_fwd_args'} =~ /\sipv6/)) {
-                if ($line =~ m|^\s*\d+\s+\d+\s*U?LOG\s+(\w+)\s+
+                if ($line =~ m|^\s*\d+\s+\d+\s*U?LOG\s+(\w+)\s+(?:\-\-\s+)?
                         \S+\s+\S+\s+$any_ip_re
                         \s+$any_ip_re\s+.*U?LOG|x) {
                     $proto = $1;
@@ -821,7 +821,7 @@ sub default_log() {
             if ($self->{'_ipt_bin_name'} eq 'ip6tables'
                     or ($self->{'_ipt_bin_name'} eq 'firewall-cmd'
                     and $self->{'_fwd_args'} =~ /\sipv6/)) {
-                if ($line =~ m|^\s*U?LOG\s+(\w+)\s+$any_ip_re
+                if ($line =~ m|^\s*U?LOG\s+(\w+)\s+(:?\-\-\s+)?$any_ip_re
                         \s+$any_ip_re\s+.*U?LOG|x) {
                     $proto = $1;
                     $found = 1;
